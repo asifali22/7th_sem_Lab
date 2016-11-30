@@ -1,6 +1,7 @@
 <?php
 	session_start();
-	//session_register("count");
+	// if program doesnt work, just comment session_register since it is a deprecated function
+	session_register("count");
 	if(!isset($_SESSION)){
 		$_SESSION["count"] =0;
 		echo "Initialised";
