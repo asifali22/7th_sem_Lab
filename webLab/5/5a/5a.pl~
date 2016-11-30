@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+print "content-type:text/html\n\n";
+print "<html><head><title>Server Information</title></head>";
+print "<body bgcolor=lightgreen>";
+print "Information is show below<br><br>";
+print "<table border=1><tr><td>Env Variable</td>";
+print "<td>Env Value</td></tr>";
+foreach $a(sort keys %ENV)
+{
+	print "<tr><td>$a</td><td>$ENV{$a}</td></tr>";
+}
+print "</table></body></html>";
+
+
+

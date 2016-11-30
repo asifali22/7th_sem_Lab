@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>2a Program</title>
+	<script type="text/javascript">
+	function checkUSN(){
+		var usn = document.getElementById("usn");
+		var res = usn.value.search(/^[1-4]{1}[A-Z]{2}\d{2}[A-Z]{2}\d{3}/);
+		var sem = document.getElementById("sem");
+		var resSem = sem.value.search(/[1-8]/);
+		if(res==0 && resSem == 0){
+			alert("Entered usn "+usn.value+" and sem "+ sem.value+" is valid");
+		}else if(res!=0 && resSem!=0){
+			alert("Entered usn "+usn.value+" and sem "+ sem.value+" isn't valid");
+		}else if(res!=0){
+			alert("Enterd usn isn't valid");
+		}else{
+			alert("Enterd sem has to be between 1 to 8");
+		}
+	}
+	</script>
+</head>
+<body>
+	<form>
+		Name:<input type="text" id="usn"><br><br>
+		Sem:<input type="text" id="sem"><br><br>
+		<input type="submit" onClick="checkUSN()">
+	</form>
+</body>
+</html>

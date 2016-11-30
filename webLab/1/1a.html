@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>1a Program</title>
+
+</head>
+<body>
+		<script type="text/javascript">
+		var n = prompt("Enter the limit:","");
+		var f1 = 0, f2 = 1;
+		document.write("The series of fibonacci for ", n, " <br>");
+		var f3;
+		document.write("", f1, "<br>");
+		document.write("", f2, "<br>");
+		for (var i = 2; i<=n ; i++) {
+			f3 = f1 + f2;
+			document.write("", f3, "<br>");
+			f1 = f2;
+			f2= f3;
+		}
+
+	</script>
+</body>
+</html>

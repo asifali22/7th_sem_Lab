@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>3a Program</title>
+	<style type="text/css">
+		#layer1{
+			border: solid thick black;
+			padding: 1em;
+			width: 300px;
+			background-color: green;
+			position: absolute;
+			top: 100px;
+			left: 200px;
+			z-index: 0;
+		}	
+		#layer2{
+			border: solid thick black;
+			padding: 1em;
+			width: 300px;
+			background-color: blue;
+			position: absolute;
+			top: 120px;
+			left: 220px;
+			z-index: 0;
+		}	
+		#layer3{
+			border: solid thick black;
+			padding: 1em;
+			width: 300px;
+			background-color: red;
+			position: absolute;
+			top: 140px;
+			left: 240px;
+			z-index: 0;
+		}	
+	</style>
+	<script type="text/javascript">
+	topLayer = "layer3";
+	function mover(toTop){
+		document.getElementById(topLayer).style.zIndex="0";
+		document.getElementById(toTop).style.zIndex="10";
+		topLayer = toTop;
+	}
+	</script>
+</head>
+<body>
+	<h3 style="text-align: center;">Basic Stack ordering</h3>
+	<div id = "layer1" onClick="mover('layer1')">Mech</div>
+	<div id = "layer2" onClick="mover('layer2')">CSE</div>
+	<div id = "layer3" onClick="mover('layer3')">ISE</div>
+</body>
+</html>

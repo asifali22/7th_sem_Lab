@@ -1,0 +1,20 @@
+student{
+	margin: 1800pt 300pt; 
+}
+
+name{
+	color: red;
+}
+
+email{
+	color: blue;
+}
+usn{
+	color: black;
+}
+branch{
+	color: green;
+}
+year{
+	color: grey;
+}

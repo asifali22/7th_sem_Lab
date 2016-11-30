@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="4a.css"?>
+<vtu>
+	<student>
+		<name>Asif</name>
+		<email>abc@gmail.com</email>
+		<usn>1ve13cs009</usn>
+		<branch>Cse</branch>
+		<year>123</year>
+	</student>
+
+	<student>
+		<name>Amzad</name>
+		<email>def@gmail.com</email>
+		<usn>1ve13cs010</usn>
+		<branch>Ise</branch>
+		<year>1321</year>
+	</student>
+
+	<student>
+		<name>Ali</name>
+		<email>cba@gmail.com</email>
+		<usn>1ve13cme009</usn>
+		<branch>ECE</branch>
+		<year>456</year>
+	</student>
+</vtu>

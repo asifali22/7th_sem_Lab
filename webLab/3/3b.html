@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title>3b Program</title>
+	<style type="text/css">
+		#layer1{
+			border: solid thick black;
+			padding: 1em;
+			width: 300px;
+			background-color: green;
+			position: absolute;
+			top: 100px;
+			left: 200px;
+			z-index: 1;
+		}	
+		#layer2{
+			border: solid thick black;
+			padding: 1em;
+			width: 300px;
+			background-color: blue;
+			position: absolute;
+			top: 120px;
+			left: 220px;
+			z-index: 2;
+		}	
+		#layer3{
+			border: solid thick black;
+			padding: 1em;
+			width: 300px;
+			background-color: red;
+			position: absolute;
+			top: 140px;
+			left: 240px;
+			z-index: 3;
+		}	
+	</style>
+	<script type="text/javascript">
+	var topLayer = "layer3";
+	var origpos;
+	function mover(toTop, pos){
+		document.getElementById(toTop).style.zIndex="4";
+		topLayer = toTop;
+		origpos = pos;
+	}
+
+	function moveBack(){
+		document.getElementById(topLayer).style.zIndex=origpos;
+	}
+
+
+	</script>
+</head>
+<body>
+	<h3 style="text-align: center;">Advanced Stack ordering</h3>
+	<p id = "layer1" onMouseOver=mover('layer1','1'); onMouseOut=moveBack()>First Layer</p>
+	<p id = "layer2" onMouseOver=mover('layer2','2'); onMouseOut=moveBack()>Second Layer</p>
+	<p id = "layer3" onMouseOver=mover('layer3','3'); onMouseOut=moveBack()>Third Layer</p>
+</body>
+</html>
