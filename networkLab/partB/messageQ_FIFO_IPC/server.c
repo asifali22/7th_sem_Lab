@@ -1,37 +1,28 @@
 #include <stdio.h>
 #include <fcntl.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-int main()
-{
-	
-	char filename[100], buf[100], buf1[100];
-	int num, num2, n, filesize, f1, fd, fd2;
-	mknod("fifo1", S_IFIFO | 0666,0);
-	mknod("fifo2", S_IFIFO | 0666,0);
-	printf("\nServer online\n");
-	fd = open("fifo1", O_RDONLY);
-	printf("\nClient Queue! waiting for request...\n");
-	while(1){
-		num  = read(fd, filename, 100);
-		filename[num] = '\0';
-		f1 = open(filename,O_RDONLY);
-		printf("\nServer: %s is found!\nTranferring the contents: ",filename );
-		filesize = lseek(f1, 0, 2);
-		printf("File size is %d\n",filesize);
-		lseek(f1, 0, 0);
-		n = read(f1, buf1, filesize);
-		buf1[n] = '\0';
-		fd2 = open("fifo2",O_WRONLY);
-		write(fd2, buf1, strlen(buf1));
-		printf("Server: Transfer completed\n");
-		exit(1);
+
+int main() {
+	char fname[50], buffer[1025];
+	int request, response, file, n;
+	mkfifo("request.fifo", 0777);
+	mkfifo("response.fifo", 0777);
+	printf("Waiting for request... \n");
+	request = open("request.fifo", O_RDONLY);
+	response = open("response.fifo", O_WRONLY);
+	read(request, fname, sizeof(fname), 0);
+	printf("Received request for %s \n", fname);
+	file = open(fname, O_RDONLY);
+	if(file < 0) {
+		write(response, "File not found. \n", 18, 0);
+	} else {
+		while((n = read(file, buffer, sizeof(buffer), 0)) > 0) {
+			write(response, buffer, n, 0);
+		}
 	}
-	unlink("fifo1");
-	unlink("fifo2");
-	
+	printf("Response sent. \n");
+	close(request);
+	close(response);
+	unlink("request.fifo");
+	unlink("response.fifo");
 	return 0;
 }
